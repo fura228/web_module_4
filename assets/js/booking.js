@@ -1,7 +1,5 @@
-
 (function () {
   "use strict";
-
 
   var EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
   var EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
@@ -20,16 +18,16 @@
   var splashClose = document.getElementById("splashClose");
   var dtInput = document.getElementById("datetime");
 
-  function setStatus(text, kind) {
+  function setStatus(text, bad) {
     if (!statusEl) return;
-    if (kind === "bad") { statusEl.setAttribute("aria-live", "assertive"); statusEl.setAttribute("role", "alert"); }
-    else { statusEl.setAttribute("aria-live", "polite"); statusEl.setAttribute("role", "status"); }
-    statusEl.className = "form-status" + (kind ? " " + kind : "");
+    statusEl.setAttribute("aria-live", bad ? "assertive" : "polite");
+    statusEl.setAttribute("role", bad ? "alert" : "status");
+    statusEl.className = "form-status" + (bad ? " bad" : "");
     statusEl.textContent = text || "";
   }
 
   if (window.flatpickr && dtInput) {
-    if (window.flatpickr.l10ns && window.flatpickr.l10ns.ru) flatpickr.localize(flatpickr.l10ns.ru);
+    if (flatpickr.l10ns && flatpickr.l10ns.ru) flatpickr.localize(flatpickr.l10ns.ru);
     flatpickr(dtInput, {
       enableTime: true,
       time_24hr: true,
@@ -42,17 +40,13 @@
         clearError(dtInput.closest(".field"));
         setStatus("");
         var d = selected[0];
-        if (d) {
+        if (d && d.toDateString() === new Date().toDateString()) {
           var now = new Date();
-          var isToday = d.toDateString() === now.toDateString();
-          if (isToday) {
-            var mins = now.getHours() * 60 + now.getMinutes();
-            var rounded = Math.ceil((mins + 1) / 30) * 30;
-            var h = Math.floor(rounded / 60), m = rounded % 60;
-            fp.set("minTime", (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m);
-          } else {
-            fp.set("minTime", "00:00");
-          }
+          var mins = Math.ceil((now.getHours() * 60 + now.getMinutes() + 1) / 30) * 30;
+          var h = Math.floor(mins / 60), m = mins % 60;
+          fp.set("minTime", (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m);
+        } else if (d) {
+          fp.set("minTime", "00:00");
         }
       }
     });
@@ -87,19 +81,17 @@
     if (c) c.removeAttribute("aria-invalid");
   }
 
-  function validate(form) {
+  function validate() {
     var ok = true;
-    var name = form.name.value.trim();
-    var ph = form.phone.value.replace(/\D/g, "");
-    var dt = form.datetime.value.trim();
+    if (form.name.value.trim().length < 2) { setError(form.name.closest(".field")); ok = false; }
+    else clearError(form.name.closest(".field"));
 
-    if (name.length < 2) { setError(form.name.closest(".field")); ok = false; } else clearError(form.name.closest(".field"));
-    if (ph.length < 11) { setError(form.phone.closest(".field")); ok = false; } else clearError(form.phone.closest(".field"));
+    if (form.phone.value.replace(/\D/g, "").length < 11) { setError(form.phone.closest(".field")); ok = false; }
+    else clearError(form.phone.closest(".field"));
 
     var dtField = form.datetime.closest(".field");
-    var picked = (dtInput && dtInput._flatpickr && dtInput._flatpickr.selectedDates[0]) || null;
-    if (!dt || !picked) { setError(dtField); ok = false; }
-    else if (picked.getTime() < Date.now() - 60000) { setError(dtField); ok = false; }   
+    var picked = dtInput && dtInput._flatpickr && dtInput._flatpickr.selectedDates[0];
+    if (!picked || picked.getTime() < Date.now() - 60000) { setError(dtField); ok = false; }
     else clearError(dtField);
     return ok;
   }
@@ -123,11 +115,8 @@
     splash.addEventListener("click", function (e) { if (e.target === splash) hideSplash(); });
     document.addEventListener("keydown", function (e) {
       if (!splash.classList.contains("show")) return;
-      if (e.key === "Escape") { hideSplash(); }
-      if (e.key === "Tab") {          
-        e.preventDefault();
-        if (splashClose) splashClose.focus();
-      }
+      if (e.key === "Escape") hideSplash();
+      if (e.key === "Tab") { e.preventDefault(); if (splashClose) splashClose.focus(); }
     });
   }
 
@@ -138,11 +127,11 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (btn.disabled) return;   
+      if (btn.disabled) return;
       setStatus("");
 
-      if (!validate(form)) {
-        setStatus("Проверьте отмеченные поля.", "bad");
+      if (!validate()) {
+        setStatus("Проверьте отмеченные поля.", true);
         var firstBad = form.querySelector(".field.invalid .control");
         if (firstBad) firstBad.focus();
         return;
@@ -171,20 +160,15 @@
           setStatus("");
           showSplash();
         } else {
-          setStatus(msg, "bad");
+          setStatus(msg, true);
         }
       }
 
       if (emailjsReady) {
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
           .then(function () { done(true); })
-          .catch(function (err) {
-            console.error(err);
-            done(false, "Не удалось отправить. Позвоните нам: 8 (800)-555-35-35");
-          });
+          .catch(function () { done(false, "Не удалось отправить. Позвоните нам: 8 (800)-555-35-35"); });
       } else {
-        
-        console.warn("EmailJS не настроен (и не будет в целях безопасности моей почты) — демо-режим. Заявка:", params);
         setTimeout(function () { done(true); }, 700);
       }
     });

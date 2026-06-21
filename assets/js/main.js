@@ -12,13 +12,13 @@
     if (hp && !reduce) hp.style.setProperty("--py", (Math.min(y, 600) * 0.06).toFixed(1) + "px");
     ticking = false;
   }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); } }
-  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); }
+  }, { passive: true });
   onScrollFrame();
 
   var burger = document.querySelector(".burger");
   function closeMenu() {
-    if (!document.body.classList.contains("menu-open")) return;
     document.body.classList.remove("menu-open");
     if (burger) burger.setAttribute("aria-expanded", "false");
   }
@@ -32,8 +32,8 @@
       a.addEventListener("click", closeMenu);
     });
     document.addEventListener("click", function (e) {
-      if (!document.body.classList.contains("menu-open")) return;
-      if (!e.target.closest(".nav-list") && !e.target.closest(".burger")) closeMenu();
+      if (document.body.classList.contains("menu-open") &&
+          !e.target.closest(".nav-list") && !e.target.closest(".burger")) closeMenu();
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeMenu();
@@ -41,7 +41,7 @@
   }
 
   var reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && reveals.length) {
+  if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
@@ -53,14 +53,13 @@
   }
 
   var track = document.querySelector(".ticker-track");
-  if (track && !track.dataset.cloned) {
+  if (track) {
     var clone = track.cloneNode(true);
     Array.prototype.forEach.call(clone.children, function (c) {
       c.setAttribute("aria-hidden", "true");
       c.setAttribute("tabindex", "-1");
     });
     while (clone.firstChild) track.appendChild(clone.firstChild);
-    track.dataset.cloned = "1";
   }
 
   var toggle = document.getElementById("tickerToggle");
@@ -68,7 +67,7 @@
     toggle.addEventListener("click", function () {
       var paused = track.classList.toggle("paused");
       toggle.setAttribute("aria-pressed", paused ? "true" : "false");
-      toggle.setAttribute("aria-label ", paused ? "Запустить ленту" : "Поставить ленту на паузу");
+      toggle.setAttribute("aria-label", paused ? "Запустить ленту" : "Поставить ленту на паузу");
     });
   }
 
