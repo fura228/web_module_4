@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>О нас — PALACE</title>
+<meta name="description" content="PALACE ent — центр психологической помощи на рынке с 2018 года. Квалифицированные психологи и учёные.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .about-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(24px,4vw,70px);align-items:start;margin-top:clamp(6px,1.5vw,24px)}
+  .about-text{display:flex;flex-direction:column;gap:clamp(18px,2.2vw,32px);align-items:flex-start}
+  .about-stats{background:var(--gray);border-radius:var(--r-md);padding:clamp(22px,2.4vw,40px);display:grid;gap:2px 0;color:#fff}
+  .about-stats .k{color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.16em;font-weight:700;font-size:clamp(11px,.9vw,14px);margin-top:16px}
+  .about-stats .k:first-child{margin-top:0}
+  .about-stats .v{font-weight:800;font-size:clamp(16px,1.5vw,26px)}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container" aria-label="Главная навигация">
+    <a class="brand" href="index.html">PALACE</a>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+    <ul class="nav-list" id="primary-nav">
+      <li><a data-page="o-nas.html" href="o-nas.html">О нас</a></li>
+      <li><a data-page="novosti.html" href="novosti.html">Новости</a></li>
+      <li><a data-page="magazin.html" href="magazin.html">Магазин</a></li>
+      <li><a class="nav-cta" data-page="zapis.html" href="zapis.html">Запись</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="hero-photo"><img loading="eager" fetchpriority="high" decoding="async" src="assets/img/hero-arm.jpg" alt="" width="298" height="374"></div>
+      <div class="hero-swoosh" aria-hidden="true">
+        <svg viewBox="0 0 1000 120" preserveAspectRatio="none">
+          <path d="M10,30 C260,150 540,-30 990,96"></path>
+        </svg>
+      </div>
+      <h1>
+        <span class="line line-1">ПСИХ</span>
+        <span class="line line-2"><span class="t">БОЛЬНИЦА</span></span>
+      </h1>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:clamp(30px,4vw,60px)">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="lead reveal">Наша больница знаменита прекрасными квалифицированными специалистами — лучшими психологами и учёными нашего времени. Все они собрались здесь, дабы помочь вам и решить ваши проблемы.</p>
+        <p class="prose reveal" data-d="1" style="max-width:52ch">«Palace» ent — компания, оказывающая услуги на рынке с 2018 года. Мы также активно осваиваем новые для себя направления: исследования в сфере психологии.</p>
+        <p class="reveal" data-d="2" style="font-weight:700;font-size:clamp(16px,1.3vw,24px)">Контакты: 8 (800)-555-35-35 &nbsp;·&nbsp; Inst: lorguruu «Palace» ent</p>
+        <a class="btn reveal" data-d="2" href="zapis.html">Записаться на консультацию</a>
+      </div>
+
+      <aside class="about-stats reveal" data-d="1">
+        <span class="k">Date</span><span class="v">30 / 06 / 07</span>
+        <span class="k">Net worth</span><span class="v">0.4b&nbsp;$</span>
+        <span class="k">Archive</span><span class="v">PALACE / 2026</span>
+        <span class="k">Ref</span><span class="v">№14</span>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <h2 class="footer-head">Контакты для связи</h2>
+      <a class="footer-cta" href="zapis.html">Записаться на приём →</a>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Контакты</h3>
+        <p>Телефон: 8 (800)-555-35-35</p>
+        <p>Адрес: ул. Мирон, д. 10</p>
+        <p>Inst: —</p>
+        <p>Часы работы: пн–вс, 9:00–21:00</p>
+      </div>
+      <div class="footer-col footer-services">
+        <h3>Услуги</h3>
+        <ul>
+          <li><a href="zapis.html">Тет-а-тет с психологом — <span class="price">4000 ₽</span></a></li>
+          <li><a href="zapis.html">Глубинная системная работа — <span class="price">17 500 ₽</span></a></li>
+          <li><a href="zapis.html">Онлайн-консультация</a></li>
+          <li><a href="magazin.html">Авторские исследования</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="o-nas.html">О нас</a></li>
+          <li><a href="novosti.html">Новости</a></li>
+          <li><a href="magazin.html">Магазин</a></li>
+          <li><a href="zapis.html">Запись на консультацию</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PALACE ent. Центр психологической помощи.</span>
+      <span class="footer-note">Мы свяжемся с вами в течение 15 минут после заявки. Конфиденциальность гарантируется.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

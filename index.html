@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PALACE — Центр помощи · Психология</title>
+<meta name="description" content="PALACE — центр психологической помощи. Тет-а-тет с психологом и глубинная системная работа. Онлайн и оффлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container" aria-label="Главная навигация">
+    <a class="brand" href="index.html">PALACE</a>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+    <ul class="nav-list" id="primary-nav">
+      <li><a data-page="o-nas.html" href="o-nas.html">О нас</a></li>
+      <li><a data-page="novosti.html" href="novosti.html">Новости</a></li>
+      <li><a data-page="magazin.html" href="magazin.html">Магазин</a></li>
+      <li><a class="nav-cta" data-page="zapis.html" href="zapis.html">Запись</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero container">
+    <div class="hero-grid">
+      <div class="hero-photo"><img loading="eager" fetchpriority="high" decoding="async" src="assets/img/hero-arm.jpg" alt="Абстрактный образ" width="298" height="374"></div>
+      <div class="hero-swoosh" aria-hidden="true">
+        <svg viewBox="0 0 1000 120" preserveAspectRatio="none">
+          <path d="M10,30 C260,150 540,-30 990,96"></path>
+        </svg>
+      </div>
+      <h1>
+        <span class="line line-1">PALACE</span>
+        <span class="line line-2"><span class="b">ЦЕНТР&nbsp;</span><span class="t">ПОМОЩИ</span></span>
+      </h1>
+    </div>
+  </section>
+
+  <section class="services container" id="services">
+    <h2 class="section-title reveal">Наши услуги</h2>
+
+    <div class="services-head reveal" data-d="1">
+      <h3>Тет-а-тет с психологом</h3>
+      <h3>Глубинная системная работа</h3>
+    </div>
+
+    <div class="services-wrap reveal" data-d="2">
+      <div class="services-card">
+        <div class="services-cols">
+          <div class="spec">
+            <div class="spec-row"><span class="k">Статус</span><span class="v">Доступно</span></div>
+            <div class="spec-row"><span class="k">Формат</span><span class="v">Онлайн / оффлайн</span></div>
+            <div class="spec-row"><span class="k">Код</span><span class="v">Один сеанс</span></div>
+            <div class="spec-row"><span class="k">Цена</span><span class="v">4000 руб.</span></div>
+          </div>
+          <div class="spec">
+            <div class="spec-row"><span class="k">Статус</span><span class="v">Выгодно</span></div>
+            <div class="spec-row"><span class="k">Формат</span><span class="v">Оффлайн</span></div>
+            <div class="spec-row"><span class="k">Код</span><span class="v">Пакет на 5 сессий</span></div>
+            <div class="spec-row"><span class="k">Цена</span><span class="v">17 500 руб.</span></div>
+          </div>
+        </div>
+        <a class="btn" href="zapis.html">Оставить заявку</a>
+      </div>
+
+      <aside class="services-aside" aria-hidden="true">
+        <div class="disc"><img loading="lazy" decoding="async" src="assets/img/services-animal.jpg" alt=""></div>
+        <div class="panel"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lenta">
+    <div class="container">
+      <div class="lenta-head reveal">
+        <h2 class="section-title">Новостная лента</h2>
+        <button class="ticker-toggle" id="tickerToggle" type="button" aria-pressed="false" aria-label="Поставить ленту на паузу">
+          <span class="i-pause">❙❙&nbsp;Пауза</span><span class="i-play">▶&nbsp;Пуск</span>
+        </button>
+      </div>
+    </div>
+    <div class="ticker reveal" data-d="1">
+      <div class="ticker-track">
+        <a class="tcard" href="novost.html"><span class="tag">Психология</span><img loading="lazy" decoding="async" src="assets/img/news-soznanie.jpg" alt="Сознание"><span class="cap">Сознание</span></a>
+        <a class="tcard" href="novost.html"><span class="tag">Сон</span><img loading="lazy" decoding="async" src="assets/img/news-son.jpg" alt="Сон"><span class="cap">Сон</span></a>
+        <a class="tcard" href="novost.html"><span class="tag">Память</span><img loading="lazy" decoding="async" src="assets/img/news-vospominaniya.jpg" alt="Воспоминания"><span class="cap">Воспоминания</span></a>
+        <a class="tcard" href="novost.html"><span class="tag">Исследование</span><img loading="lazy" decoding="async" src="assets/img/article-soznanie.jpg" alt="Исследование сознания"><span class="cap">Уникальность сознания</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <h2 class="footer-head">Контакты для связи</h2>
+      <a class="footer-cta" href="zapis.html">Записаться на приём →</a>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Контакты</h3>
+        <p>Телефон: 8 (800)-555-35-35</p>
+        <p>Адрес: ул. Мирон, д. 10</p>
+        <p>Inst: —</p>
+        <p>Часы работы: пн–вс, 9:00–21:00</p>
+      </div>
+      <div class="footer-col footer-services">
+        <h3>Услуги</h3>
+        <ul>
+          <li><a href="zapis.html">Тет-а-тет с психологом — <span class="price">4000 ₽</span></a></li>
+          <li><a href="zapis.html">Глубинная системная работа — <span class="price">17 500 ₽</span></a></li>
+          <li><a href="zapis.html">Онлайн-консультация</a></li>
+          <li><a href="magazin.html">Авторские исследования</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="o-nas.html">О нас</a></li>
+          <li><a href="novosti.html">Новости</a></li>
+          <li><a href="magazin.html">Магазин</a></li>
+          <li><a href="zapis.html">Запись на консультацию</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PALACE ent. Центр психологической помощи.</span>
+      <span class="footer-note">Мы свяжемся с вами в течение 15 минут после заявки. Конфиденциальность гарантируется.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

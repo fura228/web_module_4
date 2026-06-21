@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Страница не найдена · PALACE</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .err-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,70px);align-items:center;min-height:48vh}
+  .err-card{aspect-ratio:298/374;border-radius:10px;overflow:hidden;transform:rotate(6deg);box-shadow:0 26px 60px -28px rgba(12,12,12,.7);max-width:340px;margin-left:auto;animation:heroPhoto 1s .2s var(--ease-out) both}
+  .err-card img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:840px){.err-hero{grid-template-columns:1fr}.err-card{display:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container" aria-label="Главная навигация">
+    <a class="brand" href="index.html">PALACE</a>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+    <ul class="nav-list" id="primary-nav">
+      <li><a data-page="o-nas.html" href="o-nas.html">О нас</a></li>
+      <li><a data-page="novosti.html" href="novosti.html">Новости</a></li>
+      <li><a data-page="magazin.html" href="magazin.html">Магазин</a></li>
+      <li><a class="nav-cta" data-page="zapis.html" href="zapis.html">Запись</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="page container">
+  <div class="err-hero">
+    <div class="err-wrap">
+      <h1 class="display reveal">404<br><span style="color:var(--indigo)">ОШИБКА</span></h1>
+      <p class="err-sub reveal" data-d="1">Кажется, мы с вами свернули не туда…</p>
+      <p class="prose reveal" data-d="2" style="max-width:52ch">Ничего страшного, в цифровом мире тоже бывают тупики. Страница, которую вы ищете, переехала, удалилась или просто решила сегодня подольше поспать.</p>
+      <a class="btn reveal" data-d="3" href="index.html">Вернуться на главную</a>
+    </div>
+    <div class="err-card reveal" data-d="2" aria-hidden="true"><img loading="lazy" decoding="async" src="assets/img/hero-arm.jpg" alt=""></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <h2 class="footer-head">Контакты для связи</h2>
+      <a class="footer-cta" href="zapis.html">Записаться на приём →</a>
+    </div>
+    <div class="footer-rule"></div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Контакты</h3>
+        <p>Телефон: 8 (800)-555-35-35</p>
+        <p>Адрес: ул. Мирон, д. 10</p>
+        <p>Inst: —</p>
+        <p>Часы работы: пн–вс, 9:00–21:00</p>
+      </div>
+      <div class="footer-col footer-services">
+        <h3>Услуги</h3>
+        <ul>
+          <li><a href="zapis.html">Тет-а-тет с психологом — <span class="price">4000 ₽</span></a></li>
+          <li><a href="zapis.html">Глубинная системная работа — <span class="price">17 500 ₽</span></a></li>
+          <li><a href="zapis.html">Онлайн-консультация</a></li>
+          <li><a href="magazin.html">Авторские исследования</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-links">
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="o-nas.html">О нас</a></li>
+          <li><a href="novosti.html">Новости</a></li>
+          <li><a href="magazin.html">Магазин</a></li>
+          <li><a href="zapis.html">Запись на консультацию</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PALACE ent. Центр психологической помощи.</span>
+      <span class="footer-note">Мы свяжемся с вами в течение 15 минут после заявки. Конфиденциальность гарантируется.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
